@@ -20,7 +20,7 @@ const NewsCard = ({ news }) => {
   });
 
   return (
-    <div className="card bg-base-100 shadow-md border border-gray-400 hover:shadow-lg transition-all duration-300">
+    <div className="card bg-base-100 shadow-md border border-gray-300 hover:shadow-lg transition-all duration-300">
       {/* Header */}
       <div className="flex justify-between items-center px-4 pt-4">
         <div className="flex items-center gap-3">
@@ -49,7 +49,7 @@ const NewsCard = ({ news }) => {
         <img
           src={thumbnail_url}
           alt={title}
-          className="rounded-xl h-52 w-full object-cover"
+          className="rounded-xl w-full object-cover"
         />
       </figure>
 
