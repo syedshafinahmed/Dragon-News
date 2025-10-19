@@ -1,9 +1,11 @@
 import React from "react";
 import { FaStar, FaRegEye, FaShareAlt, FaRegBookmark } from "react-icons/fa";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
   const {
     title,
+    id,
     thumbnail_url,
     details,
     rating,
@@ -60,9 +62,9 @@ const NewsCard = ({ news }) => {
         <p className="text-sm text-gray-600 line-clamp-4">
           {details}{" "}
         </p>
-        <span className="text-primary font-semibold cursor-pointer">
+        <Link to={`/news-details/${id}`} className="text-primary font-semibold cursor-pointer">
           Read More
-        </span>
+        </Link>
 
         {/* Tags */}
         <div className="mt-3 flex flex-wrap gap-2">
