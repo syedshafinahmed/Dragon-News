@@ -21,7 +21,6 @@ const Login = () => {
         navigate(`${location.state ? location.state : '/'}`)
       })
       .catch(error => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         setError(errorMessage);
       })
