@@ -1,9 +1,13 @@
-import React, { use } from 'react';
-import { Link } from 'react-router';
+import React, { use, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const Login = () => {
+  const [error, setError] = useState('');
   const { signIn } = use(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
   const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,11 +18,12 @@ const Login = () => {
       .then(result => {
         const user = result.user;
         console.log(user);
+        navigate(`${location.state ? location.state : '/'}`)
       })
       .catch(error => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorCode, errorMessage);
+        setError(errorMessage);
       })
   }
   return (
@@ -34,6 +39,9 @@ const Login = () => {
             <label className="label">Password</label>
             <input name='password' type="password" className="input" placeholder="Password" required />
             <div><a className="link link-hover">Forgot password?</a></div>
+            {
+              error ? <p className='text-secondary text-xs text-center mt-4'>{error}</p> : ''
+            }
             <button type='submit' className="btn btn-neutral mt-4">Login</button>
             <p className='text-center pt-3 font-medium'>Don't have an account? <Link className='text-secondary' to='/auth/register'> Register</Link> </p>
           </fieldset>
